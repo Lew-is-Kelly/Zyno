@@ -1,0 +1,197 @@
+units:
+  px: cx + 2
+  py: cy + 2
+
+  pushX: (cx / 2)
+  pushY: (cy / 2)
+
+  padX: pushX + 2
+  padY: pushY + 2
+
+  pad: 2
+
+  spacing: 0.75
+
+  kx: cx + spacing
+  ky: cy + spacing
+
+  controllerW: 18.5
+  controllerH: 33.5
+  belowControllerH: 17
+  caseBorder: 1.5
+  screwThreadRadius: 0.5
+  screwPCBRadius: 4.0
+
+points:
+  key:
+    padding: cy + spacing
+    spread: cx + spacing
+  zones:
+    matrix:
+      anchor:
+        shift: [100, -150]
+        rotate: 5
+      columns:
+        outer:
+          key:
+            column_net: P020
+        pinky:
+          key: 
+            column_net: P022 
+        ring:
+          key:
+            splay: -5
+            origin: [-12, -19]
+            stagger: 12
+        middle:
+          key.stagger: 5
+        index:
+          key.stagger: -6
+        inner:
+          rows.mod.skip: true
+          key.stagger: -2
+      rows:
+        mod:
+        bottom:
+        home:
+        top:
+        num:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_mod
+        shift: [0, -0.4kx]
+      columns:
+        left:
+          key:
+            height: 1.5cx
+            splay: -5
+        home:
+          rows.thumb.height: 1.5cx
+          key:
+            spread: 21
+            stagger: -1.75
+            splay: -10
+        far:
+          rows.thumb.height: 1.5cx
+          key:
+            spread: 21.75
+            stagger: -2.85
+            splay: -15
+      rows:
+        thumb:
+    indexfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [kx + 1, -0.75]
+      columns:
+        close:
+          key:
+            splay: -5
+        far:
+          key:
+            spread: kx + 1.5
+            stagger: -1.75
+            splay: -10
+      rows:
+        index:
+  mirror:
+    ref: matrix_inner_num
+    distance: 120
+outlines:
+  keys:
+    - what: rectangle
+      where: true
+      size: [14, 14]
+      fillet: 0
+  board_left:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_outer_num
+          shift: [-padX, padY]
+        - ref: matrix_pinky_num
+          shift: [pushX - pad, padY]
+        - ref: matrix_ring_num
+          shift: [-pushX - pad, padY]
+        - ref: matrix_ring_num
+          shift: [pushX - pad, padY]
+        - ref: matrix_middle_num
+          shift: [-pushX - pad, padY]
+        - ref: matrix_middle_num
+          shift: [padX, padY]
+        - ref: matrix_index_num
+          shift: [-pushX + pad, padY]
+        - ref: matrix_index_num
+          shift: [padX, padY]
+        - ref: matrix_inner_num
+          # Won't fillet unless small num added. Bug?
+          shift: [-pushX + pad + 0.0001, padY]
+        - ref: matrix_inner_num
+          shift: [padX, padY]
+        - ref: matrix_inner_bottom
+          shift: [padX, -padY]
+        - ref: matrix_inner_bottom
+          shift: [-pushX, -padY]
+        - ref: matrix_index_mod
+          shift: [pushX - pad, -padY]
+        - ref: matrix_index_mod
+          shift: [-padX, -padY]
+        - ref: matrix_middle_mod
+          shift: [pushX - pad, -padY]
+        - ref: matrix_middle_mod
+          shift: [-pushX + pad, -padY]
+        - ref: matrix_ring_mod
+          shift: [pushX + pad, -padY]
+        - ref: matrix_ring_mod
+          shift: [-pushX + pad, -padY]
+        - ref: matrix_pinky_mod
+          shift: [pushX + pad, -padY]
+        - ref: matrix_pinky_mod
+          shift: [-pushX + pad, -padY]
+        - ref: matrix_outer_mod
+          shift: [-padX, -padY]
+        - ref: matrix_outer_num
+          shift: [-padX, -padY]
+  xl_board_key_cutouts:
+    - name: board_left
+    - operation: subtract
+      name: keys
+
+pcbs:
+  left:
+    outlines:
+      main:
+        outline: board_left
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: /^matrix_.*/
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{clumn_net}}"
+          to: "{{colrow}}"
+        adjust:
+          rotate: 180
+      diode_main:
+        what: diode
+        where: /^matrix_(?!(?:sixth_top|sixth_home|third_home|first_num|first_bottom|fourth_top|fourth_mod)).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [7.8, -3.5]
+          rotate: 90
+      nice_nano:
+        what: promicro
+        params:
+          orientation: down
+        where:
+          ref: matrix_inner_num
+
+cases:
+  plate:
+    - name: xl_board_key_cutouts
+      extrude: 1.2
