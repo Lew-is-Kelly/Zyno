@@ -146,7 +146,8 @@ outlines:
         - ref: matrix_middle_mod
           shift: [-pushX + 1, -padY]
         - ref: matrix_middle_mod
-          shift: [pushX - 1, -padY]
+          # Needs to move to avoid malformed outline in KiCad?
+          shift: [pushX - 1, -padY - 0.01]
         - ref: matrix_index_mod
           shift: [-pushX + 1, -padY]
         - ref: matrix_index_mod
@@ -428,7 +429,7 @@ pcbs:
         where: /^matrix_.*|^thumbfan_.*|^indexfan_.*/
         params:
           keycaps: true
-          reverse: false
+          reverse: true
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
@@ -447,6 +448,8 @@ pcbs:
         what: nice_nano
         where:
           ref: matrix_inner_num
+        params:
+          orientation: up
         adjust:
           shift: [2padX - 1, -pushY]
           rotate: 270
@@ -458,7 +461,18 @@ pcbs:
           shift: [12, -5.5]
           rotate: 90
         params:
-          side: B 
+          side: B
+          pos: pos
+          neg: GND
+
+      battery_connector_reverse:
+        what: jstph
+        where:
+          ref: matrix_inner_home
+          shift: [12, -5.5]
+          rotate: 90
+        params:
+          side: F
           pos: pos
           neg: GND
 
@@ -466,6 +480,17 @@ pcbs:
         what: EVQPUC
         params:
           side: B
+          from: GND
+          to: RST
+        where:
+          ref: matrix_inner_home
+          shift: [30.75, 6]
+          rotate: -90.0
+
+      horizontal_reset_reverse:
+        what: EVQPUC
+        params:
+          side: F
           from: GND
           to: RST
         where:
@@ -481,6 +506,17 @@ pcbs:
           rotate: -90
         params:
           side: B
+          from: pos
+          to: RAW
+
+      battery_switch_reverse:
+        what: slider
+        where:
+          ref: matrix_inner_home
+          shift: [30.5, -3.0]
+          rotate: -90
+        params:
+          side: F
           from: pos
           to: RAW
       
@@ -517,6 +553,19 @@ pcbs:
             shift: [padX, pushY]
         params: &textParams
             text: Zyno
+            justify: left
+            h_size: 3.0
+            v_size: 3.0
+            thickness: 0.4
+
+      back_text: &text
+        what: text
+        where: &textWhere
+            ref: matrix_inner_home
+            shift: [padX, pushY]
+        params: &textParams
+            text: Zyno
+            layer: B.SilkS
             justify: left
             h_size: 3.0
             v_size: 3.0

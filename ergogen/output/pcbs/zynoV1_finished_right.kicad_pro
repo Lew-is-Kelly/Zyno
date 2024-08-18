@@ -125,7 +125,7 @@
         "min_track_width": 0.2,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.4,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -220,7 +220,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "zyno_left_working.kicad_pro",
+    "filename": "zynoV1_finished_right.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -259,23 +259,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "outer_mod"
+        "pattern": "mirror_outer_mod"
       },
       {
         "netclass": "Default",
-        "pattern": "outer_bottom"
+        "pattern": "mirror_outer_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "outer_home"
+        "pattern": "mirror_outer_home"
       },
       {
         "netclass": "Default",
-        "pattern": "outer_top"
+        "pattern": "mirror_outer_top"
       },
       {
         "netclass": "Default",
-        "pattern": "outer_num"
+        "pattern": "mirror_outer_num"
       },
       {
         "netclass": "Default",
@@ -283,23 +283,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "pinky_mod"
+        "pattern": "mirror_pinky_mod"
       },
       {
         "netclass": "Default",
-        "pattern": "pinky_bottom"
+        "pattern": "mirror_pinky_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "pinky_home"
+        "pattern": "mirror_pinky_home"
       },
       {
         "netclass": "Default",
-        "pattern": "pinky_top"
+        "pattern": "mirror_pinky_top"
       },
       {
         "netclass": "Default",
-        "pattern": "pinky_num"
+        "pattern": "mirror_pinky_num"
       },
       {
         "netclass": "Default",
@@ -307,23 +307,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "ring_mod"
+        "pattern": "mirror_ring_mod"
       },
       {
         "netclass": "Default",
-        "pattern": "ring_bottom"
+        "pattern": "mirror_ring_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "ring_home"
+        "pattern": "mirror_ring_home"
       },
       {
         "netclass": "Default",
-        "pattern": "ring_top"
+        "pattern": "mirror_ring_top"
       },
       {
         "netclass": "Default",
-        "pattern": "ring_num"
+        "pattern": "mirror_ring_num"
       },
       {
         "netclass": "Default",
@@ -331,23 +331,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "middle_mod"
+        "pattern": "mirror_middle_mod"
       },
       {
         "netclass": "Default",
-        "pattern": "middle_bottom"
+        "pattern": "mirror_middle_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "middle_home"
+        "pattern": "mirror_middle_home"
       },
       {
         "netclass": "Default",
-        "pattern": "middle_top"
+        "pattern": "mirror_middle_top"
       },
       {
         "netclass": "Default",
-        "pattern": "middle_num"
+        "pattern": "mirror_middle_num"
       },
       {
         "netclass": "Default",
@@ -355,23 +355,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "index_mod"
+        "pattern": "mirror_index_mod"
       },
       {
         "netclass": "Default",
-        "pattern": "index_bottom"
+        "pattern": "mirror_index_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "index_home"
+        "pattern": "mirror_index_home"
       },
       {
         "netclass": "Default",
-        "pattern": "index_top"
+        "pattern": "mirror_index_top"
       },
       {
         "netclass": "Default",
-        "pattern": "index_num"
+        "pattern": "mirror_index_num"
       },
       {
         "netclass": "Default",
@@ -379,23 +379,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "inner_bottom"
+        "pattern": "mirror_inner_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "inner_home"
+        "pattern": "mirror_inner_home"
       },
       {
         "netclass": "Default",
-        "pattern": "inner_top"
+        "pattern": "mirror_inner_top"
       },
       {
         "netclass": "Default",
-        "pattern": "inner_num"
+        "pattern": "mirror_inner_num"
       },
       {
         "netclass": "Default",
-        "pattern": "left_thumb"
+        "pattern": "mirror_left_thumb"
       },
       {
         "netclass": "Default",
@@ -403,7 +403,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "home_thumb"
+        "pattern": "mirror_home_thumb"
       },
       {
         "netclass": "Default",
@@ -411,15 +411,15 @@
       },
       {
         "netclass": "Default",
-        "pattern": "far_thumb"
+        "pattern": "mirror_far_thumb"
       },
       {
         "netclass": "Default",
-        "pattern": "close_index"
+        "pattern": "mirror_close_index"
       },
       {
         "netclass": "Default",
-        "pattern": "far_index"
+        "pattern": "mirror_far_index"
       },
       {
         "netclass": "Default",
